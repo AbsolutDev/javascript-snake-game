@@ -1,0 +1,249 @@
+@font-face {
+  font-family: 'PJ Gradient';
+  src: url('./assets/PlanetJoustGradient-eZ6Kp.otf');
+}
+
+@font-face {
+  font-family: 'PJ Condensed';
+  src: url('./assets/PlanetJoustCondensed-d96oZ.otf');
+}
+
+body {
+  background-color: rgb(207, 252, 213);
+}
+
+body.dark {
+  background-color: #333;
+}
+
+#page {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+#game-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#game-stats {
+  display: flex;
+  justify-content: space-between;
+  padding: 5% 1% 1%;
+  font-family: 'PJ Gradient', 'Arial Black', sans-serif;
+  font-size: 2.4rem;
+  color: rgb(125, 181, 134);
+}
+
+.dark #game-stats {
+  color: #999;
+}
+
+#game-stats .best {
+  color: rgb(230, 100, 50)
+}
+
+#play-area {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: center;
+  background-color: rgb(125, 181, 134);
+  box-shadow: 5px 5px 5px rgb(133, 173, 139);
+  border-radius: 1rem;
+}
+
+.dark #play-area {
+  background-color: #999;
+  box-shadow: 5px 5px 5px #aaa;
+}
+
+#food {
+  background-color: rgb(255, 255, 255);
+  width: 65%;
+  height: 90%;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+}
+
+.dark #food {
+  background-color: #ddd;
+}
+
+.square {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.snake-head {
+  background-color: rgb(75, 96, 78);
+}
+
+.dark .snake-head {
+  background-color: #555
+}
+
+.snake-body,
+.snake-tail {
+  background-color: rgb(112, 143, 117);
+}
+
+.dark .snake-body,
+.dark .snake-tail {
+  background-color: #777;
+}
+
+.snake-body.up-from-right,
+.snake-body.left-from-down {
+  border-radius: 0 0 40% 0;
+}
+
+.snake-body.up-from-left,
+.snake-body.right-from-down {
+  border-radius: 0 0 0 40%;
+}
+
+.snake-body.down-from-right,
+.snake-body.left-from-up {
+  border-radius: 0 40% 0 0;
+}
+
+.snake-body.down-from-left,
+.snake-body.right-from-up {
+  border-radius: 40% 0 0 0;
+}
+
+.snake-head.up {
+  border-radius: 50% 50% 0 0;
+}
+
+.snake-head.down {
+  border-radius: 0 0 50% 50%;
+}
+
+.snake-head.left {
+  border-radius: 50% 0 0 50%;
+}
+
+.snake-head.right {
+  border-radius: 0 50% 50% 0;
+}
+
+.snake-tail.up {
+  border-radius: 0 0 30% 30%;
+}
+
+.snake-tail.down {
+  border-radius: 30% 30% 0 0;
+}
+
+.snake-tail.left {
+  border-radius: 0 30% 30% 0;
+}
+
+.snake-tail.right {
+  border-radius: 30% 0 0 30%;
+}
+
+#start-message {
+  position: absolute;
+  font-family: 'PJ Condensed', 'Arial Black', sans-serif;
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #4c614f;
+  animation: blink 2s infinite;
+}
+
+.dark #start-message {
+  color: #bbb;
+}
+
+.message {
+  position: absolute;
+  width: 70%;
+  border-radius: 1rem;
+  margin: 0 15%;
+  padding: 1rem;
+  background-color: rgb(207, 252, 213);
+  box-shadow: 1px 1px 2px rgb(207, 252, 213);
+  font-family: 'PJ Condensed', 'Arial Black', sans-serif;
+  font-size: 2.4rem;
+  line-height: 3rem;
+  text-align: center;
+  color: rgb(77, 97, 80);
+  z-index: 5;
+  transition: opacity 0.6s;
+}
+
+.dark .message {
+  background-color: #aaa;
+  box-shadow: 1px 1px 2px #aaa;
+  color: #333;
+}
+
+.message span.smaller {
+  font-size: 1.4rem;
+}
+
+.dark .message span.emph {
+  color: rgb(170, 80, 30);
+}
+
+.message span.emph {
+  color: rgb(230, 100, 50);
+}
+
+#counter-wrap {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  z-index: 5;
+}
+
+.counter {
+  font-family: 'PJ Condensed';
+  font-size: 10rem;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  opacity: 0;
+  animation: countDown 1s ease-in;
+}
+
+.dark .counter {
+  color: #eee;
+}
+
+@keyframes countDown {
+  0% {
+    opacity: 0;
+    scale: 0.5;
+  }
+  70% {
+    opacity: 0.6;
+  }
+  100% {
+    color: rgba(255, 255, 255, 0);
+    opacity: 0;
+    scale: 2;
+  }
+}
+
+@keyframes blink {
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+  }
+}
